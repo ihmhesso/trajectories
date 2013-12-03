@@ -10,17 +10,17 @@ all:
 	$(MAKE) -C lib -f makefile all
 	# Tests:
 	$(MAKE) -C test -f makefile all
-	# Tools
+	# Tools:
 	$(MAKE) -C tool -f makefile all
 	# Application:
 	$(MAKE) -C application -f makefile all
 
 clean:
-	# Libs
+	# Libs:
 	$(MAKE) -C lib -f makefile clean
-	# Tests
+	# Tests:
 	$(MAKE) -C test -f makefile clean
-	# Tools
+	# Tools:
 	$(MAKE) -C tool -f makefile clean
 	# Applications:
 	$(MAKE) -C application -f makefile clean

@@ -7,8 +7,8 @@
 PROJECT= libihmcapture.so
 
 COBJS = ihmcapture.o
-COBJS += ihmcapture_debug.o
 COBJS += ihmcapture_get.o
+COBJS += ihmcapture_debug.o
 
 
 INCDIR = -I ../../include/
@@ -32,6 +32,7 @@ $(PROJECT): $(COBJS)
 
 clean:
 	rm -f *.o $(PROJECT)
+	rm -f ../../include/$(PROJECT)
 	rm -f ../../lib64/$(PROJECT)
 	rm -R -f ../../doc/lib/ihmcapture/*
 

@@ -1,17 +1,14 @@
 #
-# CIHMCapture library makefile
+# CIHMCapture library test makefile
 # gregory.medwed@heig-vd.ch
 # Dec 2013
 
 #Shared library
-PROJECT= libihmcapture.so
+PROJECT= ihmcapture_test
 
-COBJS = ihmcapture.o
-COBJS += ihmcapture_debug.o
-COBJS += ihmcapture_get.o
+COBJS = ihmcapture_test_main.o
+#COBJS += ihmcapture_debug.o
 
-
-INCDIR = -I ../../include/
 
 # Debug
 CFLAGS = -g -Wall
@@ -19,20 +16,34 @@ CFLAGS = -g -Wall
 #CFLAGS  = -O2 -Wall
 
 
+INCDIR = -I ../../include/
+
+LIBDIRS= -L ../../lib64/
+
+# OpenCV
+LIBS = -lopencv_core
+LIBS += -lopencv_highgui
+# IHM
+LIBS += -lihmcapture
+
+
+LDFLAGS= $(LIBDIRS) $(LIBS)
+
 all: $(PROJECT)
 
 .cpp.o:
-	g++ -fPIC -c $(CFLAGS) $(INCDIR) $<
+	g++ -c $(CFLAGS) $(INCDIR) $<
 
-$(PROJECT): $(COBJS)
-	cp ihmcapture.h ../../include/
-	g++ -shared $(COBJS) $(INCDIR) -o $(PROJECT)
-	cp $(PROJECT) ../../lib64/
+$(PROJECT): $(COBJS) 
+	g++ $(COBJS) -o $(PROJECT) $(INCDIR) $(LDFLAGS)
 	doxygen Doxyfile
+# For shared library
+	@echo " *** Don't forget to add the following line in .bashrc file."
+	@echo " *** export LD_LIBRARY_PATH=/home/ihm/trajectories/lib64/"	
 
 clean:
 	rm -f *.o $(PROJECT)
-	rm -f ../../lib64/$(PROJECT)
-	rm -R -f ../../doc/lib/ihmcapture/*
+	rm -R -f ../../doc/test/ihmcapture/*
+
 
 
