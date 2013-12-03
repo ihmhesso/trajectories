@@ -5,7 +5,6 @@
 #
 
 all:
-
 	# Libs:
 	$(MAKE) -C lib -f makefile all
 	# Tests:

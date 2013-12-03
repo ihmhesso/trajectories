@@ -14,4 +14,5 @@
 
 # Doxygen stuff
 doc/
+include/
 *.tag
