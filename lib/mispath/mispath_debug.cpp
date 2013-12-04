@@ -17,19 +17,22 @@
  */
 ostream& operator<<(ostream& out, const CMISPath& path)
 {
-	out << "type_: " << path.type_ << endl;
-	out << "size_: " << path.size_ << endl;
-	out << "pointsCount_: " << path.pointsCount_ << endl;
-	out << "style_: " << path.style_ << endl;
-	out << "currentPos_: " << path.currentPos_ << endl;
+	out << "CMISPath, " << path.version_get() << endl;
+	out << "  type_:        " << path.type_ << endl;
+	out << "  size_:        " << path.size_ << endl;
+	out << "  pointsCount_: " << path.pointsCount_ << endl;
+	out << "  style_:       " << path.style_ << endl;
+	out << "  currentPos_:  " << path.currentPos_ << endl;
 
-	out << "(" << path.path_[0].frameCount << ", " << path.path_[0].p << ")" << endl;
+//DEBUG:
+#if 0
+	out << "  (" << path.path_[0].frameCount << ", " << path.path_[0].p << ")" << endl;
 	int count = (int)path.path_.size();
 	for (int i = 1; i < count; ++i)
 	{
-		out << "(" << path.path_[i].frameCount << ", " << path.path_[i].p << ")" << endl;;
+		out << "  (" << path.path_[i].frameCount << ", " << path.path_[i].p << ")" << endl;;
 	}
-
+#endif
 	out << endl;
 
 	return(out);

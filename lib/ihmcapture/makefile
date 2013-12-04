@@ -31,7 +31,7 @@ $(PROJECT): $(COBJS)
 	doxygen Doxyfile
 
 clean:
-	rm -f *.o $(PROJECT)
+	rm -f *.o *.tag $(PROJECT)
 	rm -f ../../include/$(PROJECT)
 	rm -f ../../lib64/$(PROJECT)
 	rm -R -f ../../doc/lib/ihmcapture/*

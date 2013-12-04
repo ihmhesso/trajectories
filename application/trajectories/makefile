@@ -27,7 +27,13 @@ LIBDIRS= -L ../../lib64/
 LIBS = -lopencv_core
 LIBS += -lopencv_highgui
 # IHM
+LIBS += -lihmbackground
 LIBS += -lihmcapture
+LIBS += -lihmperspective
+LIBS += -lihmrecord
+LIBS += -lihmtracking
+LIBS += -lmispath
+LIBS += -lihmfootprint
 
 
 LDFLAGS= $(LIBDIRS) $(LIBS)

@@ -8,7 +8,14 @@
 #define _TRAJECTORIES_H_
 
 
+#include <ihmbackground.h>
 #include <ihmcapture.h>
+#include <ihmfootprint.h>
+#include <ihmperspective.h>
+#include <ihmrecord.h>
+#include <ihmtracking.h>
+#include <ihmfootprint.h>
+#include <mispath.h>
 
 
 /**
@@ -17,6 +24,16 @@
 typedef struct _ApplicationParam
 {
 	Mat src;
+
+	CIHMCapture capture;
+	CIHMPerspective persp;
+	CIHMBackground bg;
+	CIHMTracking track;
+	CMISPath path;
+	CIHMFootprint footPrint;
+	CIHMRecord record;
+
+	bool exitProgram;
 } ApplicationParam, *pApplicationParam;
 
 

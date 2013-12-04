@@ -41,7 +41,7 @@ public:
 
 
 	// Debug
-//	friend ostream& operator<<(ostream& out, const CIHMCapture& cap);
+	friend ostream& operator<<(ostream& out, const CIHMCapture& cap);
 
 private:
 	/*

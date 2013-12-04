@@ -42,7 +42,7 @@ typedef enum _ETrajectory_Type
 	kTrajectory_Type_Free = 0,	/** Use mouse to draw trajectory */
 	kTrajectory_Type_Circle,	/** Circle predefine trajectory */
 	kTrajectory_Type_Ellipse,	/** Elliptic predefine trajectory */
-	kTrajectory_Type_Eight,	/** Eight shape predefine trajectory */
+	kTrajectory_Type_Eight,		/** Eight shape predefine trajectory */
 	kTrajectory_Type_Max		/** MUST BE LAST */
 } ETrajectory_Type;
 
@@ -55,7 +55,7 @@ typedef enum _EDrawing_Style
 	kDrawing_Style_Off = 0,	/** Default */
 	kDrawing_Style_Point,	/** points */
 	kDrawing_Style_Line,	/** Lines between points */
-	kDrawing_Style_Max		/** MUST BE LAST */
+	kDrawing_Style_Max	/** MUST BE LAST */
 } EDrawing_Style;
 
 
@@ -68,7 +68,7 @@ typedef enum _EObject_Shape
 	kObject_Shape_Circle = 0,	/** Default */
 	kObject_Shape_Ellipse,		/** Ellipse (varying orientation according to path)*/
 //	kObject_Shape_Rectangle,	/** Rectangle (varying orientation according to path) */
-	kObject_Shape_Max			/** MUST BE LAST */
+	kObject_Shape_Max		/** MUST BE LAST */
 } EObject_Shape;
 
 
@@ -81,7 +81,7 @@ public:
 	/*
 	 * PUBLIC variables
 	 */
-	typedef struct PathData
+	typedef struct _PathData
 	{
 		int frameCount;
 		Point p;
@@ -95,6 +95,7 @@ public:
 	~CMISPath(void);
 
 	// Get/set
+	string version_get(void) const;
 	string version_get(int& ma, int& mi, int& pa) const;
 	EDrawing_Style style_get(void) const;
 	bool style_set(EDrawing_Style style);
@@ -106,7 +107,6 @@ public:
 	bool type_set(ETrajectory_Type type);
 	EObject_Shape shape_get(void);
 	bool shape_set(EObject_Shape shape);
-
 
 	// Path get/set
 	bool list_get(vector<PathData>& path) const;
@@ -139,11 +139,11 @@ private:
 	 * PRIVATE variables
 	 */
 	ETrajectory_Type type_;	/** Path type (free, circle, rectangle) */
-	Size size_;				/** Area size (200, 200) [Pixel] */
-	int pointsCount_;		/** Max path points, default = 100 */
+	Size size_;		/** Area size (200, 200) [Pixel] */
+	int pointsCount_;	/** Max path points, default = 100 */
 	vector<PathData> path_;	/** List of points */
 	EDrawing_Style style_;	/** Drawing style (points, lines) */
-	int currentPos_;		/** Current position in the list of points */
+	int currentPos_;	/** Current position in the list of points */
 	EObject_Shape objShape_;/** Object shape */
 
 	/*

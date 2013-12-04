@@ -11,6 +11,24 @@
 
 /**
  * Get version number
+ * @return version string like "0.1.0"
+ */
+string CMISPath::version_get(void) const
+{
+	stringstream out;
+
+	int ma = kCMISPath_MAJOR_VERSION;
+	int mi = kCMISPath_MINOR_VERSION;
+	int pa = kCMISPath_PATCH_VERSION;
+
+	out << ma << "." << mi << "." << pa;
+
+	return(out.str());
+} // version_get
+
+
+/**
+ * Get version number
  * @param ma OUT major number
  * @param mi OUT minor number
  * @param pa OUT patch number
@@ -21,8 +39,8 @@ string CMISPath::version_get(int& ma, int& mi, int& pa) const
 	stringstream out;
 
 	ma = kCMISPath_MAJOR_VERSION;
-	mi = kCMISPath_MAJOR_VERSION;
-	pa = kCMISPath_MAJOR_VERSION;
+	mi = kCMISPath_MINOR_VERSION;
+	pa = kCMISPath_PATCH_VERSION;
 
 	out << ma << "." << mi << "." << pa;
 
@@ -240,6 +258,11 @@ EObject_Shape CMISPath::shape_get(void)
 }
 
 
+/**
+ * Set Object shape
+ * @param shape IN
+ * @return true if succed
+ */
 bool CMISPath::shape_set(EObject_Shape shape)
 {
 	if (shape >= kObject_Shape_Max)
