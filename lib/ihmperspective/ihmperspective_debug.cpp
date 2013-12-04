@@ -17,6 +17,7 @@
 ostream& operator<<(ostream& out, const CIHMPerspective& persp)
 {
 	out << "CIHMPerspective, " <<  persp.version_get() << endl;
+	out << "  coordCount_: " << persp.coordCount_ << endl;
 
 	return(out);
 }

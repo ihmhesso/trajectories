@@ -25,6 +25,31 @@ using namespace cv;
 
 
 /**
+ * Background Substraction parameters structure
+ */
+typedef struct _Mog2Param
+{
+	int mixtures;		/** Maximum allowed number of mixture components.
+				Actual number is determined dynamically per pixel. */
+	float bgRatio;		/** Threshold defining whether the component is significant
+				enough to be included into the background model */
+	float varThreshold;	/** Threshold for the squared Mahalanobis distance that helps
+				decide when a sample is close to the existing components */
+	float varInit;		/** Initial variance for the newly generated components.
+				It affects the speed of adaptation. */
+	float varMin;		/** Parameter used to further control the variance. */
+	float varMax;		/** Parameter used to further control the variance. */
+	float ct;		/** Complexity reduction parameter. This parameter defines
+				the number of samples needed to accept to prove the component exists. */
+	unsigned char shadowValue; /** The value for marking shadow pixels in the output foreground mask.
+				Default value is 127. */
+	float shadowThreshold;	/** Shadow threshold. The shadow is detected if the pixel is
+				a darker version of the background. */
+	bool shadowEnable;	/*  Parameter defining whether shadow detection should be enabled. */
+} Mog2Param, *pMog2Param;
+
+
+/**
  * CIHMBackground Class 
  */
 class CIHMBackground
@@ -39,16 +64,24 @@ public:
 
 	// Get/set
 	string version_get(void) const;
+//	void param_get(Mog2Param& param);
+//	bool param_set(const Mog2Param& param);
 
+//	void sub(const Mat& src, Mat& fore);
+
+//	void img_get(Mat& bgImg);
 
 	// Debug
 	friend ostream& operator<<(ostream& out, const CIHMBackground& bg);
+	void Mog2Param_print(const Mog2Param& param);
 
 private:
 	/*
 	 * PRIVATE Objects
 	 */
-	
+	BackgroundSubtractorMOG2 bg_;
+
+	bool paramChanged_;
 
 }; // CIHMBackground
 

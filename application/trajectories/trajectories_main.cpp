@@ -26,9 +26,7 @@ int main(int argc, char* argv[])
 	/*
 	 * [INIT]
 	 */
-	app.exitProgram = true;
-
-
+	ApplicationParam_init(app);
 
 
 //DEBUG:
@@ -84,12 +82,20 @@ int main(int argc, char* argv[])
 		 * 7. Draw foot print
 		 */
 
+		/*
+		 * 8. Perspective transformation
+		 */
+
+		/*
+		 * 9. Display result
+		 */
+
 
 	} while (!app.exitProgram);
 
 
 	/*
-	 * [RESSOURCE] free
+	 * [RESSOURCES] free
 	 */
 //	destroyAllWindows();	
 

@@ -1,16 +1,13 @@
 #
-# Trajectories application makefile
+# CIHMRecord library test makefile
 # gregory.medwed@heig-vd.ch
 # Dec 2013
 
 #Shared library
-PROJECT= trajectories
+PROJECT= ihmbackground_test
 
-COBJS = trajectories_main.o
-COBJS += trajectories_init.o
-#COBJS += trajectories_args.o
-#COBJS += trajectories_keyboard.o
-#COBJS += trajectories_mouse.o
+COBJS = ihmbackground_test_main.o
+#COBJS += ihmbackground_test_mouse.o
 
 
 # Debug
@@ -29,12 +26,6 @@ LIBS += -lopencv_highgui
 LIBS += -lopencv_video
 # IHM
 LIBS += -lihmbackground
-LIBS += -lihmcapture
-LIBS += -lihmperspective
-LIBS += -lihmrecord
-LIBS += -lihmtracking
-LIBS += -lmispath
-LIBS += -lihmfootprint
 
 
 LDFLAGS= $(LIBDIRS) $(LIBS)
@@ -53,7 +44,6 @@ $(PROJECT): $(COBJS)
 
 clean:
 	rm -f *.o $(PROJECT)
-	rm -R -f ../../doc/application/trajectories/*
-
+	rm -R -f ../../doc/test/ihmbackground/*
 
 

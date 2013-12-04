@@ -14,7 +14,6 @@
 #include <ihmperspective.h>
 #include <ihmrecord.h>
 #include <ihmtracking.h>
-#include <ihmfootprint.h>
 #include <mispath.h>
 
 
@@ -40,7 +39,8 @@ typedef struct _ApplicationParam
 /*
  * Functions prototypes
  */
-
+// trajectories_init.cpp
+void ApplicationParam_init(ApplicationParam& app);
 
 
 #endif // _TRAJECTORIES_H_

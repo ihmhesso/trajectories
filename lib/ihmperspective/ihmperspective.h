@@ -33,12 +33,26 @@ public:
 	 * PUBLIC Functions
 	 */
 	// Constructor/destructor
-	CIHMPerspective(void);
+	CIHMPerspective(int coordCount=4);
 	~CIHMPerspective(void);
 
 	// Get/set
 	string version_get(void) const;
+//	bool src_point_set(int index, Point2f p);
+//	bool dst_point_set(int index, Point2f p);
+//	bool src_points_set(Point2f srcPoints[]);
+//	bool dst_points_set(Point2f dstPoints[]);
 
+//	bool perspective_matrice_get(Mat& persp);
+//	bool perspective_matrice_set(const Mat& persp);
+//	bool perspective_inv_matrice_get(Mat& perspInv);
+//	bool perspective_inv_matrice_set(const Mat& perspInv);
+	
+//	bool warp(const Mat& src, Mat& out, Size sizeOut, bool inverse=false);
+
+	// Draw
+//	bool srcPoints_draw(Mat& img, Scalar color, int radius);
+//	bool square_draw(Mat& img, Scalar color, int nbSquare);
 
 	// Debug
 	friend ostream& operator<<(ostream& out, const CIHMPerspective& persp);
@@ -47,6 +61,13 @@ private:
 	/*
 	 * PRIVATE Objects
 	 */
+	int coordCount_;
+	Point2f srcPoints_[4];
+	Point2f dstPoints_[4];
+	Mat persp_;
+	Mat perspInv_;
+	bool perspMartixCompute_;
+	bool perspInvMartixCompute_;
 	
 
 }; // CIHMPerspective

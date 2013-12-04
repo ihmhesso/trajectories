@@ -1,16 +1,13 @@
 #
-# Trajectories application makefile
+# CIHMFootprint library test makefile
 # gregory.medwed@heig-vd.ch
 # Dec 2013
 
 #Shared library
-PROJECT= trajectories
+PROJECT= ihmfootprint_test
 
-COBJS = trajectories_main.o
-COBJS += trajectories_init.o
-#COBJS += trajectories_args.o
-#COBJS += trajectories_keyboard.o
-#COBJS += trajectories_mouse.o
+COBJS = ihmfootprint_test_main.o
+#COBJS += ihmfootprint_test_mouse.o
 
 
 # Debug
@@ -26,14 +23,7 @@ LIBDIRS= -L ../../lib64/
 # OpenCV
 LIBS = -lopencv_core
 LIBS += -lopencv_highgui
-LIBS += -lopencv_video
 # IHM
-LIBS += -lihmbackground
-LIBS += -lihmcapture
-LIBS += -lihmperspective
-LIBS += -lihmrecord
-LIBS += -lihmtracking
-LIBS += -lmispath
 LIBS += -lihmfootprint
 
 
@@ -53,7 +43,6 @@ $(PROJECT): $(COBJS)
 
 clean:
 	rm -f *.o $(PROJECT)
-	rm -R -f ../../doc/application/trajectories/*
-
+	rm -R -f ../../doc/test/ihmfootprint/*
 
 
