@@ -80,7 +80,6 @@ public:
 		kMode_MAX		/** MUST be last */
 	} ECapture_Mode;
 
-
 	/*
 	 * Input "type"
 	 */
@@ -134,7 +133,7 @@ private:
 		ECapture_Type inputType;
 		ECapture_Mode mode;
 		int frameCount;
-		int frameRate;		/** [fps] */
+		double frameRate;	/** [fps] */
 
 		// Thread 
 		pthread_t hThread;	/** Thread handle */

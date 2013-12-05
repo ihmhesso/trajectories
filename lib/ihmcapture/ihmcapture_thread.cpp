@@ -19,7 +19,7 @@ void* CIHMCapture::thread_core(void* pData)
 	pCaptureParam pParam = (pCaptureParam)pData;
 	double tNow = 0;
 	double tRef = 0;
-	double frameTime = 1.0/(double)kCIHMCapture_DEFAULT_FRAME_RATE;
+	double frameTime = 1.0/(double)kCIHMCapture_DEFAULT_FRAME_RATE;	// [second] */
 
 	pParam->isRunning = true;
 	cout << "[CIHMCapture]: THREAD is ALIVE!" << endl;
@@ -28,9 +28,20 @@ void* CIHMCapture::thread_core(void* pData)
 		(pParam->inputType == kType_Ethernet_Stream))
 		pParam->mode = kMode_Play;
 
-	// If video file display first image and stop
+	// If video file, update frameRate, display first image, and stop
 	if (pParam->inputType == kType_Video_File)
 	{
+		// Update frameRate and frameTime
+		pParam->frameRate = pParam->capture.get(CV_CAP_PROP_FPS);
+		if (pParam->frameRate < 1.0)
+			pParam->frameRate = kCIHMCapture_DEFAULT_FRAME_RATE;
+			
+		frameTime = 1.0/(double)pParam->frameRate;
+//DEBUG:
+		cout << "[CIHMCapture]: frameRate: " << pParam->frameRate;
+		cout << " [fps], frameTime: " << frameTime*1000 << " [ms]" << endl;
+
+		// Display first image of file
 		pParam->capture.grab();
 		pParam->capture.retrieve(pParam->img);
 		pParam->frameCount++;
@@ -41,26 +52,24 @@ void* CIHMCapture::thread_core(void* pData)
 		}
 	}
 
-	if (pParam->frameRate != 0)
-		frameTime = 1.0/(double)pParam->frameRate;
-
+	// Clock start ticking
 	tNow = (double)getTickCount()/(double)getTickFrequency();
 	tRef = tNow;
-
-
 
 	// Loop
 	do
 	{
 
+		// Get current time
 		tNow = (double)getTickCount()/(double)getTickFrequency();
 
-		// Is it time to do something
+		// Compute elapsed time since tRef [ms]
 		double delta = (tNow-tRef)*1000.0;
 
 //DEBUG
 //		cout << "tNow = " << tNow << ", tRef = " << tRef << ", delta = " << delta << endl;
 
+		// Is it time to do something
 		if (delta >= frameTime*1000.0)
 		{
 			// Update tRef
