@@ -27,6 +27,15 @@ string CIHMCapture::version_get(void) const
 
 
 /**
+ * Is video device open
+ */
+bool CIHMCapture::is_open(void)
+{
+	return(param_.capture.isOpened());
+}
+
+
+/**
  * Set callback function (call each time a new frame is ready)
  * @param pFunction IN
  * @param pData IN
@@ -53,6 +62,25 @@ CIHMCapture::ECapture_Type CIHMCapture::type_get(void)
 {
 	return(param_.inputType);
 }
+
+
+/**
+ * Input type get
+ * @param newType IN
+ * @return true if succeed
+ */
+bool CIHMCapture::type_set(ECapture_Type newType)
+{
+	// Check parameter
+	if (newType >= kType_MAX)
+		return(false);
+
+	if (param_.capture.isOpened())
+		return(false);
+
+	param_.inputType = newType;
+	return(true);
+} // type_set
 
 
 /**

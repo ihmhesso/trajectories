@@ -16,8 +16,10 @@
  */
 typedef struct _ApplicationParam
 {
-	string fileName;
+	string videoName;
+	string ipAddr;
 	int devId;
+	CIHMCapture capture;
 
 	Mat src;
 	bool newFrame;
@@ -28,6 +30,12 @@ typedef struct _ApplicationParam
 } ApplicationParam, *pApplicationParam;
 
 
+/*
+ * Function prototypes
+ */
+// ihmcapture_test_args.cpp
+void help_print(void);
+bool args_check(int argc, char* argv[], ApplicationParam& app);
 
 
 

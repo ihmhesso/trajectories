@@ -9,6 +9,7 @@
 #include "ihmcapture_test.h"
 
 
+
 /**
  * Callback for incoming images
  * @param img IN
@@ -33,25 +34,57 @@ void new_image(const Mat& img, int fCount, void* pData)
 int main(int argc, char* argv[])
 {
 
-	CIHMCapture capture;
 	ApplicationParam app;
 	app.src = Mat::zeros(380, 640, CV_8UC3);
 	app.devId = 0;
 	app.winName = "ihmcapture_test";
 	app.exitProgram = true;
 
-	cout << capture.version_get() << endl;
+//DEBUG:
+	cout << app.capture << endl;
 
-	// Try to open device
-	if (!capture.open(app.devId))
+	/*
+	 * [ARGS] check
+	 */
+	if (argc == 1)
 	{
-		cout << "ERROR: can't open device " << app.devId << endl;
+		help_print();
 		return(0);
 	}
-	app.exitProgram = false;
+	else
+	{
+		if (!args_check(argc, argv, app))
+			return(0);
+	}
 
+	/*
+	 * Try to open video device
+	 */
+	switch (app.capture.type_get())
+	{
+	case CIHMCapture::kType_USB_Device:
+	 	if (!app.capture.open(app.devId))
+		{
+			cout << "ERROR: can't open device " << app.devId << endl;
+			return(0);
+		}
+		app.exitProgram = false;
+		break;
+	case CIHMCapture::kType_Video_File:
+	 	if (!app.capture.open(app.videoName))
+		{
+			cout << "ERROR: can't open video file: " << app.videoName << endl;
+			return(0);
+		}
+		app.exitProgram = false;
+		break;
+	default:
+		cout << "ERROR: video source not supported!" << endl;
+		return(0);
+		break;
+	}	
 	// Setup callback
-	capture.callback_set(new_image, (void*)&app);
+	app.capture.callback_set(new_image, (void*)&app);
 
 
 	/*
@@ -70,14 +103,14 @@ int main(int argc, char* argv[])
 		switch ((unsigned short)key)
 		{
 		case ' ':	// 'Space'
-			switch (capture.mode_get())
+			switch (app.capture.mode_get())
 			{
 			case CIHMCapture::kMode_Stop:
-				capture.mode_set(CIHMCapture::kMode_Play);
+				app.capture.mode_set(CIHMCapture::kMode_Play);
 				break;
 			default:
 			case CIHMCapture::kMode_Play:
-				capture.mode_set(CIHMCapture::kMode_Stop);
+				app.capture.mode_set(CIHMCapture::kMode_Stop);
 				break;
 			}
 			break;
@@ -97,7 +130,7 @@ int main(int argc, char* argv[])
 	} while (!app.exitProgram);
 
 
-	capture.close();
+	app.capture.close();
 	destroyAllWindows();
 	usleep(1);
 

@@ -19,6 +19,8 @@
 #define kCIHMCapture_VERSION_MINOR_NUMBER	(1)
 #define kCIHMCapture_VERSION_PATCH_NUMBER	(0)
 
+#define kCIHMCapture_DEFAULT_FRAME_RATE		(30) /** [fps] */
+
 
 using namespace std;
 using namespace cv;
@@ -102,9 +104,10 @@ public:
 
 	// Get/set
 	string version_get(void) const;
-//	bool   is_open(void);
+	bool   is_open(void);
 	bool   callback_set(CIHMCaptureCallback pFunction, void* pData);
 	ECapture_Type type_get(void);
+	bool   type_set(ECapture_Type newType);
 	ECapture_Mode mode_get(void);
 	bool   mode_set(ECapture_Mode mode);
 	bool   img_get(Mat& img, int frameCount);
@@ -131,6 +134,7 @@ private:
 		ECapture_Type inputType;
 		ECapture_Mode mode;
 		int frameCount;
+		int frameRate;		/** [fps] */
 
 		// Thread 
 		pthread_t hThread;	/** Thread handle */

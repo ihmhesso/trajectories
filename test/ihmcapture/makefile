@@ -7,7 +7,7 @@
 PROJECT= ihmcapture_test
 
 COBJS = ihmcapture_test_main.o
-#COBJS += ihmcapture_debug.o
+COBJS += ihmcapture_test_args.o
 
 
 # Debug

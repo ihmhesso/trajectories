@@ -18,6 +18,7 @@ void CIHMCapture::CaptureParam_init(CaptureParam& param)
 	param.mode = kMode_Stop;
 	param.img = Mat::zeros(100, 100, CV_8UC3);
 	param.frameCount = 0;
+	param.frameRate = kCIHMCapture_DEFAULT_FRAME_RATE;
 
 	param.hThread = 0;
 	param.isRunning = false;
