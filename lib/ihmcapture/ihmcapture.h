@@ -1,7 +1,7 @@
 /**
  * @brief Class header file
  * @file ihmcapture.h
- * @author ...
+ * @author samoa.schor@heig-vd.ch
  * @date Dec 2013
  */
 #ifndef _IHM_CAPTURE_H_
@@ -9,6 +9,7 @@
 
 #include <iostream>
 #include <sstream>
+#include <unistd.h>
 
 #include <opencv2/core/core.hpp>
 #include <opencv2/highgui/highgui.hpp>
@@ -50,8 +51,11 @@ using namespace cv;
  */
 
 
-/*
- * Callback function prototype
+/**
+ * Callback function prototype (call everytime a new image is available)
+ * @param img IN new image
+ * @param frameCount IN actual frame count
+ * @param pUserData OUT can be used to pass additionnal data
  */
 typedef void (*CIHMCaptureCallback)(const Mat& img, int frameCount, void* pUserData);
 
@@ -63,27 +67,58 @@ class CIHMCapture
 {
 public:
 	/*
+	 * "Playback" mode
+	 */
+	typedef enum _ECapture_Mode
+	{
+		kMode_Stop = 0,
+		kMode_Play,
+//		kMode_Step_Forward,
+//		kMode_Step_Backward,
+		kMode_MAX		/** MUST be last */
+	} ECapture_Mode;
+
+
+	/*
+	 * Input "type"
+	 */
+	typedef enum _ECapture_Type
+	{
+		kType_Unknown = 0,
+		kType_USB_Device,
+		kType_Video_File,
+		kType_Ethernet_Stream,
+		kType_MAX		/** MUST be last */
+	} ECapture_Type;
+
+	/*
 	 * PUBLIC Functions
 	 */
 	// Constructor/destructor
 	CIHMCapture(void);
 //	CIHMCapture(string videoName);
-//	CIHMCapture(int cameraId);
+//	CIHMCapture(int deviceId);
 	~CIHMCapture(void);
 
 	// Get/set
 	string version_get(void) const;
-//	bool open(string videoName);
-//	bool open(int cameraId);
-//	bool is_open(void);
+//	bool   is_open(void);
+	bool   callback_set(CIHMCaptureCallback pFunction, void* pData);
+	ECapture_Type type_get(void);
+	ECapture_Mode mode_get(void);
+	bool   mode_set(ECapture_Mode mode);
+	bool   img_get(Mat& img, int frameCount);
+//	double property_get(int propId);
+//	bool   property_set(int propId, double value);
 
-//	double camera_prop_get(int propld);
-//	bool camera_prop_set(int propld, double value);
+	// Action
+	bool open(const string& videoName);
+	bool open(int cameraId);
+	bool close(void);
 	
-//	bool callback_set(CIHMCaptureCallback pFunction, void* pData);
-
 	// Debug
 	friend ostream& operator<<(ostream& out, const CIHMCapture& cap);
+	friend ostream& operator<<(ostream& out, const CIHMCapture::ECapture_Mode& mode);
 
 private:
 	/*
@@ -92,8 +127,10 @@ private:
 	typedef struct _CaptureParam
 	{
 		VideoCapture capture;
-		bool isOpen;
 		Mat img;
+		ECapture_Type inputType;
+		ECapture_Mode mode;
+		int frameCount;
 
 		// Thread 
 		pthread_t hThread;	/** Thread handle */
@@ -113,7 +150,8 @@ private:
 	/*
 	 * PRIVATE Functions
 	 */
-//	static void* thread_core(void* pData);
+	static void* thread_core(void* pData);
+	void CaptureParam_init(CaptureParam& param);
 
 }; // CIHMCapture
 

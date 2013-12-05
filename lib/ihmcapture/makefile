@@ -7,8 +7,11 @@
 PROJECT= libihmcapture.so
 
 COBJS = ihmcapture.o
+COBJS += ihmcapture_init.o
 COBJS += ihmcapture_get.o
 COBJS += ihmcapture_debug.o
+COBJS += ihmcapture_open.o
+COBJS += ihmcapture_thread.o
 
 
 INCDIR = -I ../../include/

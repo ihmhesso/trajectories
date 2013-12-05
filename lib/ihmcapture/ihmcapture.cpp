@@ -14,7 +14,7 @@
  */
 CIHMCapture::CIHMCapture(void)
 {
-
+	CaptureParam_init(param_);
 }
 
 
@@ -24,5 +24,8 @@ CIHMCapture::CIHMCapture(void)
 CIHMCapture::~CIHMCapture(void)
 {
 
-}
+	// Terminate thread
+	close();
+
+} // ~CIHMCapture
 

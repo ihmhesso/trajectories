@@ -14,7 +14,7 @@
  */
 CIHMBackground::CIHMBackground(void)
 {
-
+	paramChanged_ = false;
 }
 
 

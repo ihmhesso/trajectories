@@ -42,3 +42,4 @@ void CIHMBackground::Mog2Param_print(const Mog2Param& param)
 	cout << "  shadowEnable:   " << param.shadowEnable << endl;
 } // Mog2Param_print
 
+
