@@ -1,7 +1,7 @@
 /**
  * @brief Class header file
  * @file ihmcapture.h
- * @author ...
+ * @author samoa.schor@heig-vd.ch
  * @date Dec 2013
  */
 #ifndef _IHM_CAPTURE_H_
