@@ -83,7 +83,7 @@ bool CMISBlob::add(int frameCount, Rect roi, const Mat& fgClean, const Mat& fgCo
  */
 bool CMISBlob::remove(int id)
 {
-	if (blobsList.size() == 0)
+	if (blobsList.empty())
 		return(false);
 
 	blobsList[id].data.clear();

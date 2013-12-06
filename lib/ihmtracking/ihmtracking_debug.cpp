@@ -18,6 +18,8 @@ ostream& operator<<(ostream& out, const CIHMTracking& tracking)
 {
 	out << "CIHMTracking, " <<  tracking.version_get() << endl;
 
+	//TODO: ...
+
 	return(out);
 }
 

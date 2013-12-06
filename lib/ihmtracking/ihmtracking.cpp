@@ -14,7 +14,8 @@
  */
 CIHMTracking::CIHMTracking(void)
 {
-
+	minSize_ = kCIHMTracking_MINIMUM_SIZE;
+	maxDistance_ = kCIHMTracking_MAXIMUM_DISTANCE;
 }
 
 
