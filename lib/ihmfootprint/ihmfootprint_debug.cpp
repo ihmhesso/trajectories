@@ -10,7 +10,7 @@
 
 /**
  * Class print data (formated output)
- * @param out
+ * @param out OUT
  * @param footprint IN
  * @return output stream
  */

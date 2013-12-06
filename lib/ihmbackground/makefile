@@ -9,6 +9,7 @@ PROJECT= libihmbackground.so
 COBJS = ihmbackground.o
 COBJS += ihmbackground_get.o
 COBJS += ihmbackground_debug.o
+COBJS += ihmbackground_sub.o
 
 
 INCDIR = -I ../../include/

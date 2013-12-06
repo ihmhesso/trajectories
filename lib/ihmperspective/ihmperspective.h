@@ -48,11 +48,11 @@ public:
 //	bool perspective_inv_matrice_get(Mat& perspInv);
 //	bool perspective_inv_matrice_set(const Mat& perspInv);
 	
+	// Apply projection
 //	bool warp(const Mat& src, Mat& out, Size sizeOut, bool inverse=false);
 
 	// Draw
 //	bool srcPoints_draw(Mat& img, Scalar color, int radius);
-//	bool square_draw(Mat& img, Scalar color, int nbSquare);
 
 	// Debug
 	friend ostream& operator<<(ostream& out, const CIHMPerspective& persp);
@@ -68,7 +68,6 @@ private:
 	Mat perspInv_;
 	bool perspMartixCompute_;
 	bool perspInvMartixCompute_;
-	
 
 }; // CIHMPerspective
 

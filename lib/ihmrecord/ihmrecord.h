@@ -19,6 +19,9 @@
 #define kCIHMRecord_VERSION_PATCH_NUMBER	(0)
 
 
+#define kCIHMRecord_CODEC_DEFAULT	(CV_FOURCC('X','V','I','D'))
+
+
 using namespace std;
 using namespace cv;
 
@@ -38,6 +41,14 @@ public:
 
 	// Get/set
 	string version_get(void) const;
+//	float frameRate_get(void) const;
+//	bool  frameRate_set(float frameRate);
+//	int   frameCount_get(void) const;
+
+	// Action
+//	bool open(const string& filename, int fourcc, double fps, Size frameSize);
+//	bool is_open(void) const;
+//	bool write(const Mat& img);
 
 	// Debug
 	friend ostream& operator<<(ostream& out, const CIHMRecord& rec);
@@ -47,6 +58,7 @@ private:
 	 * PRIVATE Objects
 	 */
 	VideoWriter record_;
+
 
 }; // CIHMRecord
 

@@ -9,6 +9,7 @@ PROJECT= libihmrecord.so
 COBJS = ihmrecord.o
 COBJS += ihmrecord_get.o
 COBJS += ihmrecord_debug.o
+COBJS += ihmrecord_write.o
 
 
 INCDIR = -I ../../include/

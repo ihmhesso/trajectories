@@ -9,6 +9,7 @@ PROJECT= libihmfootprint.so
 COBJS = ihmfootprint.o
 COBJS += ihmfootprint_get.o
 COBJS += ihmfootprint_debug.o
+COBJS += ihmfootprint_draw.o
 
 
 INCDIR = -I ../../include/

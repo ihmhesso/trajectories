@@ -10,13 +10,13 @@
 
 /**
  * Class print data (formated output)
- * @param out
- * @param track IN
+ * @param out OUT
+ * @param tracking IN
  * @return output stream
  */
-ostream& operator<<(ostream& out, const CIHMTracking& track)
+ostream& operator<<(ostream& out, const CIHMTracking& tracking)
 {
-	out << "CIHMTracking, " <<  track.version_get() << endl;
+	out << "CIHMTracking, " <<  tracking.version_get() << endl;
 
 	return(out);
 }

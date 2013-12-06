@@ -66,10 +66,10 @@ public:
 	string version_get(void) const;
 //	void param_get(Mog2Param& param);
 //	bool param_set(const Mog2Param& param);
+//	bool img_get(Mat& bgImg);
 
-//	void sub(const Mat& src, Mat& fore);
-
-//	void img_get(Mat& bgImg);
+	// Background/foreground detection
+//	bool sub(const Mat& src, Mat& bgImg);
 
 	// Debug
 	friend ostream& operator<<(ostream& out, const CIHMBackground& bg);
@@ -80,7 +80,6 @@ private:
 	 * PRIVATE Objects
 	 */
 	BackgroundSubtractorMOG2 bg_;
-
 	bool paramChanged_;
 
 }; // CIHMBackground

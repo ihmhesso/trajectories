@@ -10,6 +10,8 @@ PROJECT= libihmperspective.so
 COBJS = ihmperspective.o
 COBJS += ihmperspective_get.o
 COBJS += ihmperspective_debug.o
+COBJS += ihmperspective_draw.o
+COBJS += ihmperspective_warp.o
 
 
 INCDIR = -I ../../include/
