@@ -16,7 +16,7 @@
 
 #define kCIHMCurve_VERSION_MAJOR_NUMBER	(0)
 #define kCIHMCurve_VERSION_MINOR_NUMBER	(1)
-#define kCIHMCurve_VERSION_PATCH_NUMBER	(0)
+#define kCIHMCurve_VERSION_PATCH_NUMBER	(1)
 
 
 
