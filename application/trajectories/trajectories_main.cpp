@@ -33,6 +33,7 @@ int main(int argc, char* argv[])
 	cout << "Library used:" << endl;
 	cout << app.bg;
 	cout << app.capture;
+	cout << app.curve;
 	cout << app.persp;
 	cout << app.record;
 	cout << app.track;

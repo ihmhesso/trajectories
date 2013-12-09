@@ -7,6 +7,7 @@
 all:
 	$(MAKE) -C ./ihmbackground -f makefile all
 	$(MAKE) -C ./ihmcapture -f makefile all
+	$(MAKE) -C ./ihmcurve -f makefile all
 	$(MAKE) -C ./ihmfootprint -f makefile all
 	$(MAKE) -C ./ihmperspective -f makefile all
 	$(MAKE) -C ./ihmrecord -f makefile all
@@ -16,6 +17,7 @@ all:
 clean:
 	$(MAKE) -C ./ihmbackground -f makefile clean
 	$(MAKE) -C ./ihmcapture -f makefile clean
+	$(MAKE) -C ./ihmcurve -f makefile clean
 	$(MAKE) -C ./ihmfootprint -f makefile clean
 	$(MAKE) -C ./ihmperspective -f makefile clean
 	$(MAKE) -C ./ihmrecord -f makefile clean

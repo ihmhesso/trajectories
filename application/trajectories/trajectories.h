@@ -10,6 +10,7 @@
 
 #include <ihmbackground.h>
 #include <ihmcapture.h>
+#include <ihmcurve.h>
 #include <ihmfootprint.h>
 #include <ihmperspective.h>
 #include <ihmrecord.h>
@@ -25,6 +26,7 @@ typedef struct _ApplicationParam
 	Mat src;
 
 	CIHMCapture capture;
+	CIHMCurve curve;
 	CIHMPerspective persp;
 	CIHMBackground bg;
 	CIHMTracking track;
