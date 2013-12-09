@@ -5,6 +5,7 @@
 #
 
 all:
+	$(MAKE) -C ./mispath -f makefile all
 	$(MAKE) -C ./ihmbackground -f makefile all
 	$(MAKE) -C ./ihmcapture -f makefile all
 	$(MAKE) -C ./ihmcurve -f makefile all
@@ -12,9 +13,9 @@ all:
 	$(MAKE) -C ./ihmperspective -f makefile all
 	$(MAKE) -C ./ihmrecord -f makefile all
 	$(MAKE) -C ./ihmtracking -f makefile all
-	$(MAKE) -C ./mispath -f makefile all
 
 clean:
+	$(MAKE) -C ./mispath -f makefile clean
 	$(MAKE) -C ./ihmbackground -f makefile clean
 	$(MAKE) -C ./ihmcapture -f makefile clean
 	$(MAKE) -C ./ihmcurve -f makefile clean
@@ -22,6 +23,5 @@ clean:
 	$(MAKE) -C ./ihmperspective -f makefile clean
 	$(MAKE) -C ./ihmrecord -f makefile clean
 	$(MAKE) -C ./ihmtracking -f makefile clean
-	$(MAKE) -C ./mispath -f makefile clean
 
 
