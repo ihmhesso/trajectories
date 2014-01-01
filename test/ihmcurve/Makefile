@@ -1,13 +1,13 @@
-###############################################################################
+################################################################################
 #
 #	Makefile for the ihmcurve test application.
 #	--
-#	Version	: 1.0
-#	Date	: 27 December 2013
+#	Version	: 1.0.1
+#	Date	: 01 January 2014
 #	Authors	: Rodolfo Horta (rodolfo.horta@master.hes-so.ch)
-#			  Christopher Métrailler (christopher.metrailler@master.hes-so.ch)
+#		  	  Christopher Métrailler (christopher.metrailler@master.hes-so.ch)
 #
-###############################################################################
+################################################################################
 
 # Binary name
 TARGET     = ihmcurve_test
@@ -17,9 +17,9 @@ CSRCS      = # Not used...
 
 # List of *.cpp files sources to compile
 CXXSRCS    = BezierTest.cpp \
-			 Plot.cpp \
-			 MouseCallback.cpp \
-			 ihmcurve_test_main.cpp
+             Plot.cpp \
+             MouseCallback.cpp \
+             ihmcurve_test_main.cpp
 
 # Path to all include directories
 INCS       = ../../include
@@ -40,9 +40,9 @@ CFLAGS     = -g -Wall
 LDFLAGS    = $(LIBDIRS:%=-L%) $(LIBS)
 CPPFLAGS   = -g -Wall
 
-###############################################################################
+################################################################################
 # Don't change anything below this line
-###############################################################################
+################################################################################
 
 # generate the object names
 OBJS       = $(CXXSRCS:%.cpp=%.o)
@@ -52,7 +52,8 @@ CFLAGS    += $(INCS:%=-I%)
 CPPFLAGS  += $(INCS:%=-I%) 
 
 # this is the default if the user does just call 'make'
-all: $(TARGET)
+# compile the application and generate the Doxygen doc
+all: $(TARGET) doc
 
 # link everything together
 $(TARGET): $(OBJS)
@@ -66,16 +67,15 @@ $(TARGET): $(OBJS)
 %.o: %.cpp
 	$(CPPC) $(CPPFLAGS) -c -o $@ $^
 
+# doxygen doc generation only
+doc:
+	doxygen Doxyfile
+
 # remove the binrary, all object files and html doc
 clean:
 	rm -f *.o $(TARGET)
 	rm -R -f ../../doc/test/ihmcurve/*
 
-# doxygen doc generation
-doc:
-	doxygen Doxyfile
-
-# clean must be a phony target so make knows this never exists as a file
+# phony target
 .PHONY: clean
-.PHONY: doc
 
