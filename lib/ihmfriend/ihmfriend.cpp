@@ -60,7 +60,8 @@ void CIHMFriend::get_image_filename(char *filename)
 		int filenumber = time_100%20+1;
 
 
-		sprintf(filename, "/home/ihm/Downloads/s/%u.png", filenumber);
+		//sprintf(filename, "/home/ihm/Downloads/s/%u.png", filenumber);
+		sprintf(filename, "../../picture/friend/%u.png", filenumber);
 }
 float CIHMFriend::get_angle(Point from, Point to)
 {
@@ -74,8 +75,6 @@ float CIHMFriend::get_angle(Point from, Point to)
 		angle=PI-angle;
 	else if(deltax>0&&deltay>0)
 			angle=2*PI-angle;
-
-	cout<<angle*180/PI<<endl;
 	return angle;
 }
 
@@ -94,10 +93,10 @@ int CIHMFriend::get_difftime()
 void CIHMFriend::navigate(int deltat)
 {
 	float angle = get_angle(appdata.pos, appdata.waypoint);
-	int deltax = appdata.speed*10 * deltat * cos(angle);
-	int deltay = appdata.speed*10 * deltat * sin(angle);
+	int deltax = appdata.speed * deltat * cos(angle);
+	int deltay = appdata.speed * deltat * sin(angle);
 
-	if(abs(appdata.waypoint.x-appdata.pos.x)>10&&abs(appdata.waypoint.y-appdata.pos.y)>10)
+	if(abs(appdata.waypoint.x-appdata.pos.x)>10||abs(appdata.waypoint.y-appdata.pos.y)>10)
 	{
 		appdata.pos += Point(deltax, -deltay);
 		appdata.angle = -angle-PI/2;
@@ -141,10 +140,12 @@ void CIHMFriend::draw_friend(Mat &image,const Point &current_pos)
 	case kMode_Walking:
 		if(appdata.onradius)
 		{
-			turn(100,current_pos);
+		//	turn(100,current_pos);
+			turn(deltat,current_pos);
 		}else
 		{
-			navigate(10);
+		//	navigate(10);
+			navigate(deltat);
 		}
 		break;
 	default:
