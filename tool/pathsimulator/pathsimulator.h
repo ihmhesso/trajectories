@@ -15,7 +15,6 @@
 
 #include <unistd.h>	// usleep()
 #include <time.h>	// getdate()
-//#include <sys/types.h>
 #include <sys/stat.h>	// stat(), mkdir()
 
 
@@ -23,7 +22,7 @@
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
 
-#include "mispath.h"
+#include <mispath.h>
 
 
 #define kPATH_SIMULATOR_PROGRAM_NAME	"pathsimulator"
@@ -41,7 +40,7 @@
 #define kPATH_SIMULATOR_DEFAULT_BG_COLOR	(0, 0, 0)
 #define kPATH_SIMULATOR_DEFAULT_PATH_COLOR	(0, 255, 0)
 
-#define kPATH_SIMULATOR_DEFAULT_OBJ_SIZE		(20)	/** [pixel] */
+#define kPATH_SIMULATOR_DEFAULT_OBJ_SIZE	(20)	/** [pixel] */
 #define kPATH_SIMULATOR_DEFAULT_POINTS_COUNT	(40)	/** Number of points in predefined trajectory */
 
 
@@ -84,7 +83,7 @@ typedef struct ApplicationData_
 	bool generateImages;
 
 	string winName;		/** Window name */
-	Mat src;		// Reference background image
+	Mat src;		/** Reference background image */
 	Mat img;
 
 	CMISPath* pPath;
