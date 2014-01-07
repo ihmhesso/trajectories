@@ -1,4 +1,10 @@
+/**
+ * @brief Besier test function definition
+ */
+
+
 #include "BezierTest.h"
+
 
 /**
  * Add some random Points.
@@ -7,7 +13,8 @@
  * @param nbrOfPoints IN number of random points to generate
  * @param img IN image matrix to get the window size
  */
-void InitRandomPoints(pBezierTestApp app, int nbrOfPoints, Mat *img) {
+void InitRandomPoints(pBezierTestApp app, int nbrOfPoints, Mat *img)
+{
 	// Window size
 	app->rows = img->rows;
 	app->cols = img->cols;
@@ -17,10 +24,13 @@ void InitRandomPoints(pBezierTestApp app, int nbrOfPoints, Mat *img) {
 		AddRandomPoint(app);
 }
 
-void AddRandomPoint(pBezierTestApp app) {
+
+void AddRandomPoint(pBezierTestApp app)
+{
 	Point p = Point(rand() % app->cols, rand() % app->rows);
 			app->fixedPoints.push_back(p);
 }
+
 
 /**
  * Check if a point is clicked in the given application points list.
@@ -31,7 +41,8 @@ void AddRandomPoint(pBezierTestApp app) {
  * @param x	OUT	index of the clicked point
  * @return true if a point in the list is clicked
  */
-bool CheckPointClicked(pBezierTestApp app, Point coord, int *pointNumber) {
+bool CheckPointClicked(pBezierTestApp app, Point coord, int *pointNumber)
+{
 	// Search for the first point coordinate
 	for (vector<Point>::iterator it = app->fixedPoints.begin();
 			it != app->fixedPoints.end(); ++it) {
@@ -44,6 +55,7 @@ bool CheckPointClicked(pBezierTestApp app, Point coord, int *pointNumber) {
 	return false;
 }
 
+
 /**
  * Move a point of the application.
  *
@@ -52,7 +64,8 @@ bool CheckPointClicked(pBezierTestApp app, Point coord, int *pointNumber) {
  * @param pointIndex IN list index of the point to move
  * @return true if the point has been moved
  */
-bool MovePoint(pBezierTestApp app, Point newCoord, unsigned int pointIndex) {
+bool MovePoint(pBezierTestApp app, Point newCoord, unsigned int pointIndex)
+{
 
 	// Check coordinate bounds
 	if ((newCoord.x < 0) || (newCoord.x >= app->cols))
@@ -67,5 +80,5 @@ bool MovePoint(pBezierTestApp app, Point newCoord, unsigned int pointIndex) {
 	// Update the point coordinate
 	app->fixedPoints.at(pointIndex) = newCoord;
 	return true;
-
 }
+

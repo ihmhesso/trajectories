@@ -4,7 +4,7 @@
  * 			to draw a Bezier curve. The number of points of the Bezier curve can be set.
  * @file	BezierTest.h
  *
- * @version	1.0
+ * @version	1.0.0
  * @date	26 December 2013
  * @author	Rodolfo Horta (rodolfo.horta@master.hes-so.ch)
  * @author	Christopher Métrailler (christopher.metrailler@master.hes-so.ch)
@@ -26,28 +26,39 @@ using namespace cv;
 /** Application name */
 #define APP_NAME "Bezier_Curve_Test"
 
+
 /**
  * Bezier curve generation structure
  */
-typedef struct _BezierTestApp {
+typedef struct _BezierTestApp
+{
 
 	// List of points to draw
-	vector<Point> fixedPoints, bezierPoints;
+	vector<Point> fixedPoints;
+	vector<Point> bezierPoints;
 
-	int cols, rows; // Window size
+	int cols;
+	int rows; // Window size
 
 } BezierTestApp, *pBezierTestApp;
 
-// Fill the points list with some random coordinates
+
+/*
+ * Functions prototype
+ */
+// BesierTest.cpp
 void InitRandomPoints(pBezierTestApp app, int nbrOfPoints, Mat *img);
-
-// Add a random point
 void AddRandomPoint(pBezierTestApp app);
-
-// Check if the click (x,y point) corresponds to the position of a point in the array
 bool CheckPointClicked(pBezierTestApp app, Point coord, int *pointNumber);
-
-// Move the position of a point
 bool MovePoint(pBezierTestApp app, Point newCoord, unsigned int pointIndex);
+
+// MouseCallback.cpp
+void mouse_callback(int event, int x, int y, int flags, void* param);
+bool ClickedPoint(void);
+
+// Plot.cpp
+bool PlotPoints(vector<Point> *points, Mat img, int radius = 5, Scalar color = Scalar(255, 0, 0));
+bool PlotPoint(Point point, Mat img, int radius = 5, Scalar color = Scalar(255, 0, 0));
+
 
 #endif // _BEZIERTEST_H_

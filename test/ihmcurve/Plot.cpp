@@ -1,4 +1,4 @@
-#include "Plot.h"
+#include "BezierTest.h"
 
 /**
  * This function draws a filled circle for each points of a given list.
@@ -9,17 +9,21 @@
  * @param color IN	color of the circle
  * @return true if successful, false if img is empty
  */
-bool PlotPoints(vector<Point> *points, Mat img, int radius, Scalar color) {
+bool PlotPoints(vector<Point> *points, Mat img, int radius, Scalar color)
+{
 	if (img.empty())
 		return false;	// Image cannot be empty
 
 	// Draw a filled circle for each points
 	for (vector<Point>::iterator it = points->begin(); it != points->end(); ++it)
 		PlotPoint(*it, img, radius, color);
+
 	return true;
 }
 
-bool PlotPoint(Point point, Mat img, int radius, Scalar color) {
+
+bool PlotPoint(Point point, Mat img, int radius, Scalar color)
+{
 	if (img.empty())
 			return false;	// Image cannot be empty
 

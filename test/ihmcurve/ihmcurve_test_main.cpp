@@ -2,9 +2,9 @@
  * @brief	Main application file
  * 			Bezier application test using OpenCV.
  * 			MSE IHM, December 2013
- * @file	Main.cpp
+ * @file	ihmcurve_test_main.cpp
  *
- * @version	1.0
+ * @version	1.0.0
  * @date	26 December 2013
  * @author	Rodolfo Horta (rodolfo.horta@master.hes-so.ch)
  * @author	Christopher Métrailler (christopher.metrailler@master.hes-so.ch)
@@ -12,17 +12,17 @@
 #include <ihmcurve.h>
 
 #include "BezierTest.h"
-#include "MouseCallback.h"
-#include "Plot.h"
 
 // Application settings :
-#define NUMBER_OF_FIXED_POINTS 		4		// Fixed points to modify the curve (>= 2)
+#define NUMBER_OF_FIXED_POINTS 		4	// Fixed points to modify the curve (>= 2)
 #define BEZIER_CURVE_NBR_OF_PTS 	1000	// Number of points for the Bezier curve (> 1)
+
 
 /**
  * Main function
  */
-int main() {
+int main()
+{
 
 	// Check input parameters range
 	// TODO: Set these parameters with arguments
