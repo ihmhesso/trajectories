@@ -70,13 +70,15 @@ int main(void)
 		imshow("CIHMFriendtest", picture);
 
 		int key = waitKey(100);
-		if(key==27)	// <Esc>
+		key &= 0x0000FFFF;
+
+		if (key == 27)	// <Esc>
 			break;
-		if(key=='i')
+		if (key == 'i')
 		{
 			fr.mode_set(CIHMFriend::kMode_Idle);
 		}
-		else if(key=='w')
+		else if (key == 'w')
 		{
 			fr.mode_set(CIHMFriend::kMode_Walking);
 
