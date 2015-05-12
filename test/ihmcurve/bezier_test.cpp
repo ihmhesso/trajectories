@@ -1,9 +1,14 @@
 /**
  * @brief Besier test function definition
+ * @file bezier_test.cpp
+ * @file bezier_test.h
+ * @author rodolfo.horta@master.hes-so.ch
+ * @author christopher.metrailler@master.hes-so.ch
+ * @date 26 December 2013
  */
 
 
-#include "BezierTest.h"
+#include "bezier_test.h"
 
 
 /**

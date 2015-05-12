@@ -1,13 +1,11 @@
 /**
- * @brief	BezierTest header file
- * 			Main test application to draw a Bezier curve. A number of random points can be added
- * 			to draw a Bezier curve. The number of points of the Bezier curve can be set.
- * @file	BezierTest.h
- *
- * @version	1.0.0
- * @date	26 December 2013
- * @author	Rodolfo Horta (rodolfo.horta@master.hes-so.ch)
- * @author	Christopher Métrailler (christopher.metrailler@master.hes-so.ch)
+ * @brief Bezier test header file
+ * 	Main test application to draw a Bezier curve. A number of random points can be added
+ * 	to draw a Bezier curve. The number of points of the Bezier curve can be set.
+ * @file bezier_test.h
+ * @author rodolfo.horta@master.hes-so.ch
+ * @author christopher.metrailler@master.hes-so.ch
+ * @date 26 December 2013
  */
 #ifndef _BEZIERTEST_H_
 #define _BEZIERTEST_H_

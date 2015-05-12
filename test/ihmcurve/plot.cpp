@@ -1,15 +1,23 @@
-#include "BezierTest.h"
+/**
+ * @brief Plot function definition
+ * @file plot.cpp
+ * @author rodolfo.horta@master.hes-so.ch
+ * @author christopher.metrailler@master.hes-so.ch
+ * @date 26 December 2013
+ */
+
+
+#include "bezier_test.h"
 
 /**
  * This function draws a filled circle for each points of a given list.
- *
  * @param points IN	list of points to plot
  * @param img IN matrice where the function plots
  * @param radius IN	radius of the filled circle
  * @param color IN	color of the circle
  * @return true if successful, false if img is empty
  */
-bool PlotPoints(vector<Point> *points, Mat img, int radius, Scalar color)
+bool PlotPoints(vector<Point>* points, Mat img, int radius, Scalar color)
 {
 	if (img.empty())
 		return false;	// Image cannot be empty

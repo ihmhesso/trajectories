@@ -38,7 +38,7 @@ public:
 		kMode_Idle = 0,
 		kMode_Walking,
 		//...
-		kMode_MAX		/** MUST BE LAST */
+		kMode_MAX	/** MUST BE LAST */
 	} EFriend_Mode;
 
 

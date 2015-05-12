@@ -1,17 +1,15 @@
 /**
- * @brief	Main application file
- * 			Bezier application test using OpenCV.
- * 			MSE IHM, December 2013
- * @file	ihmcurve_test_main.cpp
- *
- * @version	1.0.0
+ * @brief Main application file
+ * @file ihmcurve_test_main.cpp
+ * @author	rodolfo.horta@master.hes-so.ch
+ * @author	christopher.metrailler@master.hes-so.ch
  * @date	26 December 2013
- * @author	Rodolfo Horta (rodolfo.horta@master.hes-so.ch)
- * @author	Christopher Métrailler (christopher.metrailler@master.hes-so.ch)
  */
+
 #include <ihmcurve.h>
 
-#include "BezierTest.h"
+#include "bezier_test.h"
+
 
 // Application settings :
 #define NUMBER_OF_FIXED_POINTS 		4	// Fixed points to modify the curve (>= 2)
@@ -37,7 +35,7 @@ int main()
 	// Bezier test application
 	BezierTestApp app;
 
-	Mat img(600, 800, CV_8UC3, Scalar(0, 200, 255));
+	Mat img(600, 800, CV_8UC3, Scalar(0, 0, 0));
 	namedWindow(APP_NAME);
 
 	setMouseCallback(APP_NAME, mouse_callback, &app);
@@ -65,27 +63,27 @@ int main()
 	do {
 		// Clear image
 		img = Mat::zeros(img.rows, img.cols, CV_8UC3);
-		img = Scalar(0, 200, 255);
+		img = Scalar(0, 0, 0);
 
 		// A point has been moved
-		if(ClickedPoint())
+		if (ClickedPoint())
 			bezierUpdate = true;
 
 		// Add a new random point and update the Bezier curve
-		if(ch == 'a') {
+		if (ch == 'a') {
 			AddRandomPoint(&app);	// Update the end point
 			bezierUpdate = true;
 		}
 
 		// Update the Bezier curve only if necessary
-		if(bezierUpdate) {
+		if (bezierUpdate) {
 			bezierUpdate = false;
 			bezier.curveGenerator(&app.fixedPoints, &curvePts[0], BEZIER_CURVE_NBR_OF_PTS);
 		}
 
 		// Draw Bezier curve points in black
 		for (int i = 0; i < BEZIER_CURVE_NBR_OF_PTS; i++)
-			PlotPoint(curvePts[i], img, 2, Scalar(0, 0, 0));
+			PlotPoint(curvePts[i], img, 2, Scalar(255, 255, 255));
 
 		// Draw all fixed points, start and end points with a different appearance
 		PlotPoints(&app.fixedPoints, img, 5, Scalar(0, 0, 255));

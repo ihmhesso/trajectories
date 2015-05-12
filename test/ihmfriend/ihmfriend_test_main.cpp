@@ -51,7 +51,7 @@ int main(void)
 
 	cout << fr << endl;
 	Mat picture;
-	Point pos(400 ,500);
+	Point pos(400, 500);
 
 	namedWindow("CIHMFriendtest");
 
@@ -60,13 +60,13 @@ int main(void)
 
 	while(1)
 	{
-		picture = Mat::zeros(1000,1000, CV_8UC3);
+		picture = Mat::zeros(1000, 1000, CV_8UC3);
 		picture = Scalar(235,235,235);
 
-		fr.draw_friend(picture,pos);
+		fr.draw_friend(picture, pos);
 
-		circle(picture, pos,2 ,Scalar(255,0,0));
-		circle(picture, pos,100 ,Scalar(255,0,0));
+		circle(picture, pos, 2, Scalar(255,0,0));
+		circle(picture, pos, 100, Scalar(255,0,0));
 		imshow("CIHMFriendtest", picture);
 
 		int key = waitKey(100);

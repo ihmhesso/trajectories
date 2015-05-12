@@ -22,7 +22,7 @@
 #define kCIHMTracking_VERSION_MINOR_NUMBER	(1)
 #define kCIHMTracking_VERSION_PATCH_NUMBER	(0)
 
-#define kCIHMTracking_LIB_DEBUG_NAME		"[MISBLOBDETECT]: "
+#define kCIHMTracking_LIB_DEBUG_NAME		"[MISTRACKING]: "
 
 
 #define kCIHMTracking_MINIMUM_SIZE		(1.5f)	/** [%] */
