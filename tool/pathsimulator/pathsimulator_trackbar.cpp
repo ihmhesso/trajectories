@@ -48,6 +48,6 @@ void framesCount_has_changed(int value, void* pUserData)
 	pApp->framesCount = value;
 	setTrackbarPos("Frames count", pApp->winName, pApp->framesCount);
 
-	pApp->pCapture->set(CV_CAP_PROP_POS_FRAMES, (double)pApp->framesCount);
+	pApp->pCapture->set(CAP_PROP_POS_FRAMES, (double)pApp->framesCount);
 
 } // framesCount_has_changed

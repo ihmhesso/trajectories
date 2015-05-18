@@ -31,6 +31,7 @@ LIBDIRS= -L ../../lib64/
 LIBS = -lopencv_core
 LIBS += -lopencv_highgui
 LIBS += -lopencv_imgproc
+LIBS += -lopencv_videoio
 # IHM
 LIBS += -lmispath
 

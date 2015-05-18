@@ -79,7 +79,7 @@ private:
 	/*
 	 * PRIVATE Objects
 	 */
-	BackgroundSubtractorMOG2 bg_;
+	Ptr<BackgroundSubtractor> bg_;
 	bool paramChanged_;
 
 }; // CIHMBackground

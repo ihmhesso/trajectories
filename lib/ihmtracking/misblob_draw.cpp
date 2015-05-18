@@ -42,11 +42,11 @@ bool CMISBlob::box(Mat& img, int id, Scalar color)
 
 	putText(img, text,
 		data.roi.tl(),	// Origine
-		CV_FONT_HERSHEY_PLAIN,
+		FONT_HERSHEY_PLAIN,
 		1,
 		color,
 		1,
-		CV_AA);
+		LINE_AA);
 
 	return(true);
 } // box

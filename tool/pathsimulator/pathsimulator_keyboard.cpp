@@ -86,7 +86,7 @@ bool keyboard_handler(ApplicationData& app, int key)
 			app.generateImages = true;
 
 			app.pPath->current_pos_set(0);
-			app.pCapture->set(CV_CAP_PROP_POS_FRAMES, 0.0);
+			app.pCapture->set(CAP_PROP_POS_FRAMES, 0.0);
 			app.mode = kPlayback_Mode_Record;
 			cout << "Record mode" <<endl;
 
@@ -114,7 +114,7 @@ bool keyboard_handler(ApplicationData& app, int key)
 		break;
 	case 'p':		// 'Playback'
 		app.pPath->current_pos_set(0);
-		app.pCapture->set(CV_CAP_PROP_POS_FRAMES, 0.0);
+		app.pCapture->set(CAP_PROP_POS_FRAMES, 0.0);
 		app.mode = kPlayback_Mode_Play;
 		cout << "PLAY mode" <<endl;
 		break;
@@ -138,7 +138,7 @@ bool keyboard_handler(ApplicationData& app, int key)
 	case 's':		// 'Stop'
 		app.folderName.clear();
 		app.pPath->current_pos_set(0);
-		app.pCapture->set(CV_CAP_PROP_POS_FRAMES, 0.0);
+		app.pCapture->set(CAP_PROP_POS_FRAMES, 0.0);
 		setTrackbarPos("Frames count", app.winName, 0);
 		app.mode = kPlayback_Mode_Stop;
 		app.generateImages = false;
@@ -194,7 +194,7 @@ bool keyboard_handler(ApplicationData& app, int key)
 			string videoName = format_filename("output/", app.filename, app.pPath->type_get(), ".avi");
 
 			// Create video recorder
-			app.pRecord = new VideoWriter(videoName, CV_FOURCC('D','I','V','X'), 30.0, app.size);
+			app.pRecord = new VideoWriter(videoName, VideoWriter::fourcc('D','I','V','X'), 30.0, app.size);
 
 			usleep(10);
 			if (!app.pRecord->isOpened())
@@ -203,7 +203,7 @@ bool keyboard_handler(ApplicationData& app, int key)
 				break;
 			}
 			app.pPath->current_pos_set(0);
-			app.pCapture->set(CV_CAP_PROP_POS_FRAMES, 0.0);
+			app.pCapture->set(CAP_PROP_POS_FRAMES, 0.0);
 			app.mode = kPlayback_Mode_Record;
 			cout << "Record mode" <<endl;
 

@@ -32,7 +32,7 @@ void* CIHMCapture::thread_core(void* pData)
 	if (pParam->inputType == kType_Video_File)
 	{
 		// Update frameRate and frameTime
-		pParam->frameRate = pParam->capture.get(CV_CAP_PROP_FPS);
+		pParam->frameRate = pParam->capture.get(CAP_PROP_FPS);
 		if (pParam->frameRate < 1.0)
 			pParam->frameRate = kCIHMCapture_DEFAULT_FRAME_RATE;
 			

@@ -13,6 +13,7 @@
 
 #include <opencv2/core/core.hpp>
 #include <opencv2/highgui/highgui.hpp>
+#include <opencv2/imgproc/imgproc.hpp>
 
 
 #define kCIHMCapture_VERSION_MAJOR_NUMBER	(0)
@@ -132,7 +133,7 @@ private:
 		Mat img;
 		ECapture_Type inputType;
 		ECapture_Mode mode;
-		int frameCount;
+		int frameCount;	
 		double frameRate;	/** [fps] */
 
 		// Thread 
