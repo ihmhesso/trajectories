@@ -23,6 +23,7 @@ LIBDIRS= -L ../../lib64/
 # OpenCV
 LIBS = -lopencv_core
 LIBS += -lopencv_highgui
+LIBS += -lopencv_imgproc
 LIBS += -lopencv_video
 # IHM
 LIBS += -lihmbackground

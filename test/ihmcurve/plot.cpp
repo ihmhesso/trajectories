@@ -35,7 +35,7 @@ bool PlotPoint(Point point, Mat img, int radius, Scalar color)
 	if (img.empty())
 			return false;	// Image cannot be empty
 
-	circle(img, point, radius, color, CV_FILLED);
+	circle(img, point, radius, color, FILLED);
 	return true;
 }
 

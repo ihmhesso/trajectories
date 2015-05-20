@@ -28,14 +28,14 @@ void mouse_callback(int event, int x, int y, int flags, void *param)
 
 	switch (event)
 	{
-	case CV_EVENT_LBUTTONDOWN:
+	case EVENT_LBUTTONDOWN:
 		// Check if the mouse click is on a point
 		isPointClicked = CheckPointClicked(app, Point(x, y), &pointIndex);
 		break;
-	case CV_EVENT_LBUTTONUP:
+	case EVENT_LBUTTONUP:
 		isPointClicked = false;
 		break;
-	case CV_EVENT_MOUSEMOVE:
+	case EVENT_MOUSEMOVE:
 		if (isPointClicked) {
 			Point p(x, y); // Current cursor position
 			MovePoint(app, p, pointIndex);	// Update the point coordinate

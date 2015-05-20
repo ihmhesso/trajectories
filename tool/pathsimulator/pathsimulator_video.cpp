@@ -45,7 +45,7 @@ bool video_handler(ApplicationData& app)
 		case kPlayback_Mode_Play:
 			app.pPath->current_pos_inc(1, app.loopEnable);
 			if (app.maxFrame != 0)
-				app.framesCount = (int)app.pCapture->get(CV_CAP_PROP_POS_FRAMES);
+				app.framesCount = (int)app.pCapture->get(CAP_PROP_POS_FRAMES);
 			else
 				app.framesCount++;
 
@@ -67,7 +67,7 @@ bool video_handler(ApplicationData& app)
 			// Update input
 			app.pPath->current_pos_inc(1, app.loopEnable);
 			if (app.maxFrame != 0)
-				app.framesCount = (int)app.pCapture->get(CV_CAP_PROP_POS_FRAMES);
+				app.framesCount = (int)app.pCapture->get(CAP_PROP_POS_FRAMES);
 			else
 				app.framesCount++;
 
@@ -77,7 +77,7 @@ bool video_handler(ApplicationData& app)
 //				app.mode = kPlayback_Mode_Stop;
 //				cout << "STOP mode" <<endl;
 // Better: restart the video until the user STOP or we path through all points
-				app.pCapture->set(CV_CAP_PROP_POS_FRAMES, 0.0);
+				app.pCapture->set(CAP_PROP_POS_FRAMES, 0.0);
 			}
 			else
 			{

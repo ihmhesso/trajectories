@@ -1,13 +1,15 @@
 #
-# CIHMTracking library test makefile
+# CIHMCurve library test makefile
 # gregory.medwed@heig-vd.ch
-# Dec 2013
+# May 2015
 
 #Shared library
-PROJECT= ihmtracking_test
+PROJECT= ihmcurve_test
 
-COBJS = ihmtracking_test_main.o
-#COBJS += ihmtracking_test_mouse.o
+COBJS = bezier_test.o
+COBJS += plot.o
+COBJS += mouse_callback.o
+COBJS += ihmcurve_test_main.o
 
 
 # Debug
@@ -25,7 +27,7 @@ LIBS = -lopencv_core
 LIBS += -lopencv_highgui
 LIBS += -lopencv_imgproc
 # IHM
-LIBS += -lihmtracking
+LIBS += -lihmcurve
 
 
 LDFLAGS= $(LIBDIRS) $(LIBS)
@@ -44,6 +46,7 @@ $(PROJECT): $(COBJS)
 
 clean:
 	rm -f *.o $(PROJECT)
-	rm -R -f ../../doc/test/ihmtracking/*
+	rm -R -f ../../doc/test/ihmcurve/*
+
 
 

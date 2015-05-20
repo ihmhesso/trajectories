@@ -160,7 +160,7 @@ bool args_check(int argc, char* argv[], ApplicationData& app)
 					break;
 				}
 
-				app.maxFrame = (int)app.pCapture->get(CV_CAP_PROP_FRAME_COUNT);
+				app.maxFrame = (int)app.pCapture->get(CAP_PROP_FRAME_COUNT);
 				cout << "filename = " << app.filename << "(" << app.maxFrame << ")" << endl;
 
 				// Read first image
