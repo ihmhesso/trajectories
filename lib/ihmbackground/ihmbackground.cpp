@@ -15,6 +15,7 @@
 CIHMBackground::CIHMBackground(void)
 {
 	paramChanged_ = false;
+	pBg_ = createBackgroundSubtractorMOG2().dynamicCast<BackgroundSubtractor>();
 }
 
 

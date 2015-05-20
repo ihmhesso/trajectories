@@ -10,9 +10,12 @@
 #include <iostream>
 #include <sstream>
 
-#include <opencv2/core/core.hpp>
-#include <opencv2/highgui/highgui.hpp>
-#include <opencv2/video/background_segm.hpp>
+#include <opencv2/core.hpp>
+#include <opencv2/highgui.hpp>
+#include <opencv2/imgproc.hpp>
+#include <opencv2/videoio.hpp>
+#include "opencv2/video/background_segm.hpp"
+
 
 
 #define kCIHMBackground_VERSION_MAJOR_NUMBER	(0)
@@ -79,7 +82,7 @@ private:
 	/*
 	 * PRIVATE Objects
 	 */
-	BackgroundSubtractorMOG2 bg_;
+	BackgroundSubtractor* pBg_;
 	bool paramChanged_;
 
 }; // CIHMBackground

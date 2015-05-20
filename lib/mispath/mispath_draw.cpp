@@ -34,14 +34,14 @@ bool CMISPath::path_draw(const Mat& src, Scalar color, Mat& dst)
 	int count = path_.size();
 
 	//Highlight the first and last point
-	circle(dst, path_[0].p, radius, green, CV_FILLED);
-	circle(dst, path_[count-1].p, radius, red, CV_FILLED);
+	circle(dst, path_[0].p, radius, green, FILLED);
+	circle(dst, path_[count-1].p, radius, red, FILLED);
 
 	switch (style_)
 	{
 	case kDrawing_Style_Point:
 		for (int i = 1; i < count-1; ++i)
-			circle(dst, path_[i].p, radius, color, CV_FILLED);
+			circle(dst, path_[i].p, radius, color, FILLED);
 		break;
 	case kDrawing_Style_Line:
 		for (int i = 0; i < count-1; ++i)
@@ -75,18 +75,18 @@ bool CMISPath::position_draw(const Mat& src, Scalar color, int size, Mat& dst)
 	{
 	default:
 	case kObject_Shape_Circle:
-		circle(dst, path_[currentPos_].p, size, color, CV_FILLED);
+		circle(dst, path_[currentPos_].p, size, color, FILLED);
 		break;
 	case kObject_Shape_Ellipse:
 		{
 			Size axes(size, size/2);	// with = major axis, width = minor axis
 			Point p1 = path_[currentPos_].p;
 			Point p2 = path_[currentPos_-1].p;
-			double rad = atan((double)(p1.y-p2.y)/(double)(p1.x-p2.x));		// Rotation angle [rad]
+			double rad = atan((double)(p1.y-p2.y)/(double)(p1.x-p2.x));	// Rotation angle [rad]
 			double rotation = rad*(180.0/(double)CV_PI);	// Rotation angle [degree]
 //DEBUG
 //			cout << "rotation = " << rotation << endl;
-			ellipse(dst, path_[currentPos_].p, axes, rotation, 0.0, 360.0, color, CV_FILLED);
+			ellipse(dst, path_[currentPos_].p, axes, rotation, 0.0, 360.0, color, FILLED);
 		}
 		break;
 	}
